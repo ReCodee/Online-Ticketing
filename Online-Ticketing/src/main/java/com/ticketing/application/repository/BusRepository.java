@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ticketing.application.model.*;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface BusRepository extends JpaRepository<Bus, Integer>{
 
-	User findByEmail(String email);
-	
 }
