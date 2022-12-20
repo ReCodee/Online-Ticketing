@@ -1,0 +1,14 @@
+<h3 class="text-center font-weight-bold display-6">Passengers</h3>
+<div class = "Passengers" 
+         *ngFor="let traveller of travellers; index as i" >
+<div class="card">
+    <h5 class="card-header" style="background-color:rgb(167, 218, 248);">{{i+1}}. {{traveller.name}}</h5>
+    <div class="card-body">
+      <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Age</span> <span>{{traveller.age}}</span> </div>
+      <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Seat Number</span> <span>{{traveller.seatnumber}}</span> </div>
+      <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Gender</span> <span>{{traveller.gender}}</span> </div>
+    </div>
+</div>  
+<br> 
+</div>
+

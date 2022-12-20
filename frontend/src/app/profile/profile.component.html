@@ -1,0 +1,89 @@
+
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div class="card p-4">
+    <h5 *ngIf="edit" class="d-flex justify-content-center"style="color: red;">You can edit  your profile</h5>
+    <div class="mb-3 image d-flex flex-column justify-content-center align-items-center">  <img src="assets/Images/man.png" height="100" width="100" /></div>
+    <div>
+     
+      <form (ngSubmit)="onSubmit(profile)"  #profile="ngForm">
+          <div class="form-group row">
+              <label for="username" class="col-sm-4 col-form-label">Name</label>
+              <div class="col-sm-8">
+                  <input type="text" 
+                  class="form-control-plaintext" id="username"  [disabled]="!edit"
+                
+                  name="username"
+                  [(ngModel)]="userdata.username" 
+                  required
+                  #username="ngModel">
+                  <span *ngIf="!username.valid && edit" style="color: red;font-size: 10px;">*Please Enter the Name</span>
+                  
+              </div>
+          </div>
+          
+
+          <div class="form-group row mt-3">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+              <input type="email"  class="form-control-plaintext" id="staticEmail"  [disabled]="true"   [(ngModel)]="userdata.email"  name="email" required email #email="ngModel" >
+              <!--span class="help-block" style="color: red;" *ngIf="!email.valid && email.touched">*Please enter a valid email</span-->
+            </div>
+          </div>
+  
+          <div class="form-group row mt-3">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm-8">
+              <input type="password" class="form-control-plaintext" id="inputPassword"  [disabled]="!edit"   [(ngModel)]="userdata.password"  name="password" minlength="8" required #password="ngModel" >
+               <span *ngIf="!password.valid && edit" style="color: red;font-size: 10px;">*Password length should be more than 7 characters</span>
+            </div>
+          </div>
+  
+          <div class="form-group row mt-3">
+              <label for="phone" class="col-sm-4 col-form-label">Phone Number</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="phone" [disabled]="!edit"  [(ngModel)]="userdata.phone" name="phone" required minlength="10" maxlength="10" #phone="ngModel">
+                <span *ngIf="!phone.valid && edit " style="color: red;font-size: 10px;">*Phone number has to be of length 10</span>
+              </div>
+            </div>
+
+  
+  
+            <div class="form-group row mt-3">
+              <label for="gender" class="col-sm-4 col-form-label">Gender</label>
+              <div class="col-sm-8">
+                  <select class="custom-select form-control-plaintext" id="gender"  [disabled]="!edit" [(ngModel)]="userdata.gender" name="gender" required #gender="ngModel">
+                    <option selected value="Female">Female</option>
+                    <option value="Male">Male</option>
+                   
+                  </select>
+                  
+              </div>
+            </div>
+
+            <div class="form-group row mt-3">
+              <label for="City" class="col-sm-4 col-form-label">City</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="City"   [disabled]="!edit"  [(ngModel)]="userdata.city" name="city" required #city="ngModel">
+                <span *ngIf="!city.valid && edit" style="color: red;font-size: 10px;">*Please enter the City Name</span>
+              </div>
+            </div>
+           
+            <div class="mt-3 d-flex justify-content-center" *ngIf="!edit" >
+              <button (click)="editform()" class="btn btn-primary">Edit Profile</button>
+           </div>
+
+            
+            <div class="mt-3 d-flex justify-content-center" *ngIf="edit">
+            
+              <button  type="submit" *ngIf="edit" class="btn btn-danger p-2" [disabled]="!profile.valid">Save Profile</button>
+             <button (click)="onCancel()"  class="btn btn-primary p-2 " style="margin-left: 5px;">Cancel</button>
+            </div>
+
+        </form>
+      </div>
+      
+      
+      
+  </div>
+</div>
+

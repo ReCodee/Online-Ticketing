@@ -1,0 +1,109 @@
+<form>
+  <div class="bg-img">
+    <form action="/action_page.php" class="container">
+      <h3> Journey Details </h3>
+  
+      <div class="form-group">
+        <label> Leaving From</label>
+        <input #box (keyup)="onKey(box.value)" name="from" [(ngModel)]="from" type="text" class ="form-control">
+        <select name="cars" id="cars">
+          <option *ngFor="let value of values" value="{{value}}">{{value}}</option>
+        </select>
+
+    </div>
+  
+    <div class="form-group">
+        <label> Going To</label>
+        <input #box (keyup)="onKey1(box.value)" name="to" type="text" [(ngModel)]="to" class ="form-control">
+        <select name="cars" id="cars">
+          <option *ngFor="let value of values1" value="{{value}}">{{value}}</option>
+        </select>
+    </div>
+  
+  
+    <div  class="form-group col-md-12">
+      <label  for="">Departing On</label>
+      <input name="date" [(ngModel)]="date" class="form-control form-control-sm ng-untouched ng-pristine ng-invalid" name="depart_date" ngmodel="" required="" type="date" ng-reflect-required="" ng-reflect-name="depart_date" ng-reflect-model="">
+    </div>
+    <div>
+      <h1></h1>
+      <button class = "btn btn-danger" type ="submit" (click)="onClick()">Search Buses</button>
+    </div>
+  
+    </form>
+  </div>
+</form>
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+    <img src="https://images.pexels.com/photos/3608967/pexels-photo-3608967.jpeg?cs=srgb&dl=pexels-timcompound-3608967.jpg&fm=jpg" alt=" " width="300" height="240" class="d-inline-block align-text-right">
+  </div>
+  
+  
+  <div class="col-md-6 offset-md-4">
+    <h3> Journey Details </h3>
+    <form>
+    
+        <div class="form-group">
+            <label> Leaving From</label>
+            <input type="text" class ="form-control">
+        </div>
+    
+        <div class="form-group">
+            <label> Going To</label>
+            <input type="text" class ="form-control">
+        </div>
+  
+  
+        <div  class="form-group col-md-12">
+          <label  for="">Departing On</label>
+          <input  class="form-control form-control-sm ng-untouched ng-pristine ng-invalid" name="depart_date" ngmodel="" required="" type="date" ng-reflect-required="" ng-reflect-name="depart_date" ng-reflect-model="">
+        </div>
+    
+        <button class = "btn btn-danger" type ="submit">Search Buses</button>
+    
+    </form>
+    </div>  -->
+  
+    <!-- <div class="container">
+      <img src="https://images.pexels.com/photos/3608967/pexels-photo-3608967.jpeg?cs=srgb&dl=pexels-timcompound-3608967.jpg&fm=jpg" alt=" " width="300" height="240" class="d-inline-block align-text-right">
+    </div> -->
+  
+  <!-- <div  class="container">
+      <div class="row justify-content-center pb-5 pt-3">
+        <div class="col-md-5 block mt-3">
+          <form  novalidate="" class="ng-pristine ng-invalid ng-touched">
+            <div class="row">
+              <div  class="form-group col-md-6">
+                  <label for="name">Leaving From</label>
+  
+                  <input type="text" id="name" name="name" required>
+              
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="name" >Going To</label>
+  
+                  <input type="text" id="name" name="name" required>
+              </div>
+            </div>
+            <div class="row">
+              <div  class="form-group col-md-12">
+                <label  for="">Departing On</label>
+                <input  class="form-control form-control-sm ng-untouched ng-pristine ng-invalid" name="depart_date" ngmodel="" required="" type="date" ng-reflect-required="" ng-reflect-name="depart_date" ng-reflect-model="">
+              </div>
+              
+            </div>
+            <h1></h1>
+            <input class="favorite styled"
+         type="button"
+         value="search buses">
+          </form>
+        </div>
+      </div>
+    </div> -->

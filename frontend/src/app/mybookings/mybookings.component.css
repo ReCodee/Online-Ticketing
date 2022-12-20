@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+}
+div {
+    display: grid;
+    border: 5px;
+  
+}
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:deepskyblue
+}
+caption{
+    color: rgb(22, 197, 209) ;
+    caption-side: top;
+    text-align: center;
+    
+
+
+}
+#table {
+    display: -ms-grid;
+    margin-top: 20px;
+
+
+
+ 
+}

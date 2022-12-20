@@ -1,0 +1,74 @@
+        
+<div class="card border-light bg-light">
+    <img src="assets/Images/Payment_confirmation.png" class="card-img-top" alt="...">
+
+        <div class="bg-pay p-3">
+            <h5 class="card-title">Journey Summary</h5>
+            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">PickUp Point</span> <span>{{PickUpPoint}}</span> </div>
+            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">DropOff Point</span><span>{{DropOffPoint}}</span> </div>
+            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Date</span> <span>{{Date}}</span> </div>
+            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Time</span> <span>19:00 hrs</span> </div>
+            <hr>
+            <div class="d-flex justify-content-between mt-2"> <span class="lh-16 fw-500">Number of Passengers</span> <span>{{NumberofPassengers}}</span> </div>
+            <div class="d-flex justify-content-between mt-2"> <span class="lh-16 fw-500">Fare </span><span>Rs.{{fare}}</span> </div>
+            <hr>
+            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total Fare</span> <span>Rs.{{totalFare}}</span> </div>
+            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Insurance Responsibility</span> <span>Rs.20 * {{NumberofPassengers}}</span> </div>
+            <hr>
+            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total Payable</span> <span class="text-success">Rs.{{totalFare+ 20*NumberofPassengers}}</span> </div>
+            <div class="d-flex justify-content-between mt-2">
+                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#CancelBackdrop">Cancel</a>
+                <a class="btn btn-success" href="#" role="button" data-toggle="modal" data-target="#BookBackdrop" (click)="onBook(bookingConfirmation)" >Book</a></div>
+        </div>
+    </div> 
+       <br>
+
+    <!--div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="card">
+                <div class="card-body text-center"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+                    <h6><i class="bi bi-check-circle-fill" style="color: green;"></i> SUCCESSFUL</h6>
+                    <p>Your tickets were successfully booked! <br> Click on continue to browse.</p>
+                </div>
+            </div>
+        </div>
+    </div-->
+    <div  class="modal fade" id="BookBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <div  *ngIf="BookingIsDone();else elseBlock" class="card-body text-center"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+                    <h6><i class="bi bi-check-circle-fill" style="color: green;"></i> SUCCESSFUL</h6>
+                    <p>Your tickets were successfully booked! <br> Click on continue to browse.</p>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"  (click)="onHome()">Continue</button>
+                </div>
+               <ng-template #elseBlock >
+                <div class="card-body text-center">OOPS
+                    <h6>Something went wrong</h6>
+                    <p>Click on back to go to booking page.<br> Click on cancel to go to home page.</p>
+                    
+                    <button type="button" class="btn btn-outline-primary me-4" data-dismiss="modal"  (click)="onBookingSeat()">Back</button>
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal"  (click)="onHome()">Cancel</button>
+               
+                </div>
+            </ng-template> 
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="CancelBackdrop"  tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                    <p>Are you sure you want to cancel booking?<br> Click on cancel to go to booking page.</p>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"  (click)="onBookingSeat()">Cancel</button>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    

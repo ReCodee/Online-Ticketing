@@ -1,0 +1,60 @@
+
+    <br><br><br>
+    <body>
+        <div>
+            
+            <br><br>
+            
+                <table class ="content-table">
+                    
+                   
+                    <thead>
+                       <tr>
+                           <th>S.no.</th>
+                           <th>Age</th>
+                           <th>Name</th>
+                           <th>Location from</th>
+                           <th>Location to</th>
+                           <th>Date of travel</th>
+                       </tr>
+                    </thead> 
+                <tbody >
+                        <tr *ngFor="let bookings of bookings ;index as i">
+                            <td>
+                                {{i}}
+                            </td>
+                            <td>
+                                {{bookings.age}}
+                            </td>
+                            <td>
+                                {{bookings.name}}
+                            </td>
+                          
+                            <td>
+                                {{bookings.location_from}}
+                            </td>
+                            <td>
+                                {{bookings.location_to}}
+                            </td>
+                            <td>
+                                {{bookings.date_of_travel}}
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+               <br>
+               <br>
+               <br>
+               <br>
+               
+              
+              
+              
+            
+        </div>
+    </body>
+
+
+
+

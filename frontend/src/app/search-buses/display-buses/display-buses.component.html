@@ -1,0 +1,35 @@
+<div class="container">
+<div class= "row">
+<div>
+    <br>
+    <h2> Buses List</h2>
+    <table class = "table table-striped">
+        <thead>
+            <tr>
+                <th> Bus Number</th>
+                <th> Bus Name</th>
+                <th> NumberOfSeats </th>
+                <th> BusNumberPlate</th>
+        
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let bus of busses; let i=index" >
+                <td> {{ i+1}}</td>
+                <td> {{ bus.busName}} </td>
+                <td> {{ bus.numberOfSeats }} </td>
+                <td> {{ bus.busNumberPlate }} </td>
+                
+                <td>
+                    <button class = "btn btn-success" (click)="onclick1(i)"> Book Seat</button>
+
+                    <button class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                    <button class = "btn  btn-info" style="margin-left: 10px"> View</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+</div>
+
+</div>
+</div>
