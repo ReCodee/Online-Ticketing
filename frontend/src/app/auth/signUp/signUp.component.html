@@ -17,9 +17,14 @@
                 <p class="text-white-50 mb-5">Please enter your details!</p>
   
                 <div class="form-outline form-white mb-4">
-                    <input required type="name" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" id="typeNameX" class="form-control form-control-md" />
+                    <input required type="name" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" id="typeNameX" class="form-control form-control-md" />
                     <label class="form-label" for="typeNameX">Name</label>
-                  </div>                
+                  </div>
+                
+                  <div class="form-outline form-white mb-4">
+                    <input required type="name" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" id="typeNameX" class="form-control form-control-md" />
+                    <label class="form-label" for="typeNameX">Name</label>
+                  </div>  
 
                 <div class="form-outline form-white mb-4">
                   <input required type="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" id="typeEmailX" class="form-control form-control-md" />

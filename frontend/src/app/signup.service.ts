@@ -9,6 +9,6 @@ export class SignupService {
   constructor(private http:HttpClient) { }
 
   public doSignup(user:any){
-    return this.http.post("http://localhost:8082/signup",user,{responseType:'text' as 'json'});
+    return this.http.post("http://localhost:8080/api/users",user,{responseType:'text' as 'json'});
   }
 }

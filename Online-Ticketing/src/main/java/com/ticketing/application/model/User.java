@@ -22,18 +22,36 @@ public class User {
     private String lastName;
 
     private String email;
+    
+    private String password;
+    
+    private String phone;
+    
+    private String city;
+    
+    private String gender;
 
     public User() {
 
     }
 
-    public User(String firstName, String lastName, String email) {
+    public User(String firstName, String lastName, String email, String password) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
     }
-    public long getId() {
+    
+    public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public long getId() {
         return id;
     }
     public void setId(long id) {

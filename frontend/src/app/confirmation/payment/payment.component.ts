@@ -66,13 +66,13 @@ export class PaymentComponent implements OnInit {
 
   onBook(bookingConfirmation : booking_confirmation) {
     console.log(bookingConfirmation);
-    this.http.post('http://localhost:8082/confirmation',bookingConfirmation,{responseType:'text' as 'json'})
+    this.http.post('http://localhost:8080/confirmation',bookingConfirmation,{responseType:'text' as 'json'})
     .subscribe(responseData =>{
       this.response = String(responseData);
       console.log(responseData);
     });
   }
-
+  
 
   onHome():void{
     this.router.navigate(['/home'])

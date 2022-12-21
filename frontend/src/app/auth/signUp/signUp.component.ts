@@ -11,7 +11,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   
-  user:User=new User("","","","","","");
+  user:User=new User("","","","","","","");
   message:any;
   // router: any;
 
@@ -22,11 +22,11 @@ export class SignUpComponent implements OnInit {
   }
 
   public signupNow(){
-    let res=this.service.doSignup(this.user);
-     res.subscribe((data)=>{this.message=data
-     if(this.message=="Success"){
-      this.router.navigate(['']);
-    }});
+     let res=this.service.doSignup(this.user);
+      res.subscribe((data)=>{this.message=data
+      if(data){
+        this.router.navigate(['/home']);
+    }}); 
      console.log(this.message);
 }
   public Login(){

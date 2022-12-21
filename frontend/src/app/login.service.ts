@@ -9,6 +9,6 @@ export class LoginService {
   constructor(private http:HttpClient) { }
    
   public doLogin(curUser:any){
-    return this.http.post("http://localhost:8082/login",curUser,{responseType:'text' as 'json'});
+    return this.http.get("http://localhost:8080/api/user/"+curUser.email,{responseType:'text' as 'json'});
   }
 }

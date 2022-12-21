@@ -29,9 +29,6 @@ export class LoginComponent implements OnInit{
 
       console.log(Data);
       console.log((this.message));
-      // if((this.message)=="user doesn't exist"){
-      //   this.router.navigate(['signup']);
-      //   }
         if(this.message!="password is incorrect" && this.message!="user doesn't exist, SignUp now"){
           this.service.userid=Number(this.message);
           console.log(this.service.userid);

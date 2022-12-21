@@ -34,10 +34,10 @@ const routes: Routes = [
   { path: 'aboutus' , component: AboutUsComponent, outlet:'footerRouter' },
   { path: 'contactus' , component: ContactUsComponent, outlet:'footerRouter'},
   { path: 'feedback' , component: FeedbackComponent, outlet:'footerRouter'},
+  { path: 'feedback' , component: FeedbackComponent},
   { path: 'help' , component: HelpComponent, outlet:'footerRouter'},
   { path: 'privacypolicy' , component: PrivacyPolicyComponent, outlet:'footerRouter'},
-  { path: 'tandc' , component: TAndCComponent, outlet:'footerRouter'},
- 
+  { path: 'tandc' , component: TAndCComponent, outlet:'footerRouter'}, 
   {path:'signup',component:SignUpComponent}
 ];
 

@@ -45,18 +45,36 @@ public class UserController {
 		return ResponseEntity.ok().body(u);
 	}
     
-    @GetMapping("/user/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable(value = "email") String userEmail)
+    @PostMapping("/user")
+	public ResponseEntity<Map<String, User>> getUserByEmail(@Valid @RequestBody User user)
 			throws ResourceNotFoundException {
 		//User user = userRepository.findById(userEmail)
 			//	.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + userId));
-		User u = userRepository.findByEmail(userEmail);
-		return ResponseEntity.ok().body(u);
+		User u = userRepository.findByEmail(user.getEmail());
+		Map<String, User> response = new HashMap<>();
+		//response.put("deleted", Boolean.TRUE);
+		if ( u == null ) {
+			response.put("incorrect email", u);
+    	} else if ( u.getPassword() == user.getPassword())  {
+			response.put("incorrect password", u);
+		} else {
+			response.put("Success", u);		
+		}
+	
+		return ResponseEntity.ok().body(response);
 	}
     
     @PostMapping("/users")
-	public User createUser(@Valid @RequestBody User user) {
-		return userRepository.save(user);
+	public ResponseEntity<Boolean> createUser(@Valid @RequestBody User user) {
+    	User u = userRepository.findByEmail(user.getEmail());
+    	Boolean response;
+    	if ( u != null ) {
+    		response = Boolean.FALSE;
+    	} else {
+    		userRepository.save(user);
+    	   response = Boolean.TRUE;
+    	}
+		return ResponseEntity.ok().body(response);
 	}
     
     @PutMapping("/users/{id}")
