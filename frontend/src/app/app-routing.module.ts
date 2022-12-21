@@ -41,15 +41,8 @@ const routes: Routes = [
   { path: 'feedback' , component: FeedbackComponent},
   { path: 'help' , component: HelpComponent, outlet:'footerRouter'},
   { path: 'privacypolicy' , component: PrivacyPolicyComponent, outlet:'footerRouter'},
-<<<<<<< HEAD
   { path: 'tandc' , component: TAndCComponent, outlet:'footerRouter'}, 
   {path:'signup',component:SignUpComponent}
-=======
-  { path: 'tandc' , component: TAndCComponent, outlet:'footerRouter'},
- 
-  {path:'signup',component:SignUpComponent},
-  {path:'coupon',component:confirmationcoupon}
->>>>>>> dbb2e1e6aefa5f1b39d1244e1aecaeb7096f441e
 ];
 
 @NgModule({
