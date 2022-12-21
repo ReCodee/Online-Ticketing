@@ -21,10 +21,13 @@ import { MybookingsComponent } from './mybookings/mybookings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DisplayBusesComponent } from './search-buses/display-buses/display-buses.component';
 import { SearchBusesComponent } from './search-buses/search-buses.component';
+import { FeedBackComponent } from './feedback/feedback.component';
+
 
 const routes: Routes = [
   
   {path : 'home', component : SearchBusesComponent},
+  {path : 'feedback', component : FeedBackComponent },
   {path : 'displaybuses', component : DisplayBusesComponent},
   {path: '',component:LoginComponent},
   {path : 'confirmation' , component : ConfirmationComponent },
