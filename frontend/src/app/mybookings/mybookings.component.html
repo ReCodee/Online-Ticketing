@@ -19,26 +19,29 @@
                        </tr>
                     </thead> 
                 <tbody >
-                        <tr *ngFor="let bookings of bookings ;index as i">
+                        <tr *ngFor="let passenger of passengers ;index as i;">
                             <td>
                                 {{i}}
                             </td>
                             <td>
-                                {{bookings.age}}
+                                {{passenger.age}}
                             </td>
                             <td>
-                                {{bookings.name}}
+                                {{passenger.name}}
                             </td>
                           
                             <td>
-                                {{bookings.location_from}}
+                                {{passenger.source}}
                             </td>
                             <td>
-                                {{bookings.location_to}}
+                                {{passenger.destination}}
                             </td>
                             <td>
-                                {{bookings.date_of_travel}}
+                                {{passenger.seatnumber}}
                             </td>
+                            <td>
+                                <button class = "btn btn-danger" style="margin-left: 10px" (click)="Delete(passenger.ticketID)"> Delete</button>
+                           </td>
 
                         </tr>
                     </tbody>

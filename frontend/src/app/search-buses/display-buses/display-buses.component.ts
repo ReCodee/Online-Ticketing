@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Bus } from 'src/app/bus';
 
-import { SearchService } from 'src/app/search.service';
+import { SearchService } from 'src/app/services/search.service';
 
 
 
@@ -51,9 +51,15 @@ onclick1(i : number)
 
 {
 
-this.service.busId=this.busses[i].busID;
+this.service.busId=this.busses[i].vehicleId;
 
 this.service.busName=this.busses[i].busName;
+
+this.service.locationfrom = this.busses[i].from;
+
+this.service.locationto = this.busses[i].to;
+
+this.service.vehicleId = this.busses[i].vehicleId;
 
 
 this.router.navigate(["/bookingseat"], { skipLocationChange: true });

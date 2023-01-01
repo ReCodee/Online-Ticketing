@@ -16,9 +16,9 @@
         <tbody>
             <tr *ngFor = "let bus of busses; let i=index" >
                 <td> {{ i+1}}</td>
-                <td> {{ bus.busName}} </td>
-                <td> {{ bus.numberOfSeats }} </td>
-                <td> {{ bus.busNumberPlate }} </td>
+                <td> BusWale Services</td>
+                <td> {{ bus.seats }} </td>
+                <td> {{ bus.numberPlate }} </td>
                 
                 <td>
                     <button class = "btn btn-success" (click)="onclick1(i)"> Book Seat</button>

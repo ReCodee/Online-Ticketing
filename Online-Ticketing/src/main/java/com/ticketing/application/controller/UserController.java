@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ticketing.application.exception.ResourceNotFoundException;
 import com.ticketing.application.model.*;
 import com.ticketing.application.repository.UserRepository;
+import com.ticketing.application.utils.AuthResponse;
+import com.ticketing.application.utils.LoginAuth;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -54,15 +56,41 @@ public class UserController {
 		Map<String, User> response = new HashMap<>();
 		//response.put("deleted", Boolean.TRUE);
 		if ( u == null ) {
-			response.put("incorrect email", u);
-    	} else if ( u.getPassword() == user.getPassword())  {
-			response.put("incorrect password", u);
+			response.put("mail", u);
+    	} else if ( !u.getPassword().equals(user.getPassword()) )  {
+			response.put("pass", u);
 		} else {
-			response.put("Success", u);		
+			response.put("ok", u);		
 		}
 	
 		return ResponseEntity.ok().body(response);
 	}
+    
+//    @PostMapping("/user")
+//	public ResponseEntity<Map<AuthResponse, User>> getUserByEmail(@Valid @RequestBody LoginAuth user)
+//			throws ResourceNotFoundException {
+//		//User user = userRepository.findById(userEmail)
+//			//	.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + userId));
+//		User u = userRepository.findByEmail(user.getEmail());
+//		AuthResponse response;
+//		Map<AuthResponse, User> mp = new HashMap<AuthResponse, User>();
+//		System.out.println(user.getPassword());
+//		//response.put("deleted", Boolean.TRUE);
+//		if ( u == null ) {
+//			response = new AuthResponse(Boolean.FALSE, "incorrect email");
+//			mp.put(response, u);
+//    	} else if ( !u.getPassword().equals(user.getPassword()) )  {
+//    		System.out.println(u.getPassword() + " v/s " + user.getPassword());
+//    		System.out.println(u.getPassword().equals(user.getPassword()));
+//			response = new AuthResponse(Boolean.FALSE, "incorrect password");
+//			mp.put(response, u);
+//		} else {
+//			response = new AuthResponse(Boolean.TRUE, "success");	
+//			mp.put(response, u);
+//		}
+//	
+//		return ResponseEntity.ok().body(mp);
+//	}
     
     @PostMapping("/users")
 	public ResponseEntity<Boolean> createUser(@Valid @RequestBody User user) {

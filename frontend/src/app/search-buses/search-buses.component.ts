@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, from } from 'rxjs';
 import { Bus } from '../bus';
-import { SearchService } from '../search.service';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-search-buses',
@@ -38,15 +38,14 @@ export class SearchBusesComponent implements OnInit {
 
   onClick()
   {
-
-    this.httpClient.get<Bus[]>('http://localhost:8082/display/'+this.from+'/'+this.to+'/'+this.date).subscribe(data => {
+    this.httpClient.get<Bus[]>('http://localhost:8080/api/vehicle/buses/fromandto?from='+this.from+'&to='+this.to).subscribe(data => {
       //this.buses=data;
       this.service1.buses=data;
       // console.log(this.buses);
       // console.log(this.service.buses);
       this.service1.locationto=this.from;
       this.service1.locationfrom=this.to;
-      this.service1.date=this.date;
+      //this.service1.date=this.date;
 
       this._route.navigate(['/displaybuses']);
     });

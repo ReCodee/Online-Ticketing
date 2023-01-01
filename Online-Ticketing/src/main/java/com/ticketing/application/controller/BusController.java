@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ticketing.application.exception.ResourceNotFoundException;
@@ -43,6 +44,12 @@ public class BusController {
 				.orElseThrow(() -> new ResourceNotFoundException("Bus not found for this id :: " + busId));
 		return ResponseEntity.ok().body(bus);
 	}
+    
+    @GetMapping("/buses/fromandto")
+    public ResponseEntity<List<Bus>> getBusByFromAndTo(@RequestParam String from, @RequestParam String to) {
+    
+    	return ResponseEntity.ok().body(busRepository.findByFromAndTo(from, to));
+    }
     
     @PostMapping("/bus")
 	public Bus createBus(@Valid @RequestBody Bus bus) {

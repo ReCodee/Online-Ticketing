@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../auth/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignupService {
+
+  user:User;
 
   constructor(private http:HttpClient) { }
 

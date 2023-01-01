@@ -14,10 +14,16 @@
             <hr>
             <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total Fare</span> <span>Rs.{{totalFare}}</span> </div>
             <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Insurance Responsibility</span> <span>Rs.20 * {{NumberofPassengers}}</span> </div>
+            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Selected Coupon</span> <span></span>{{couponCode}}</div>
             <hr>
-            <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total Payable</span> <span class="text-success">Rs.{{totalFare+ 20*NumberofPassengers}}</span> </div>
+           
+            <div *ngIf="couponCode == 'NONE' ; else elseBlock" class="d-flex justify-content-between mt-2"> <span class="fw-500">Total Payable</span> <span class="text-success">Rs.{{totalFare+ 20*NumberofPassengers}}</span> </div>
+            <ng-template #elseBlock>
+                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total Payable</span> <span class="text-success">Rs.{{(totalFare+ 20*NumberofPassengers) - ( totalFare / 10 )}}</span> </div>
+              </ng-template>
             <div class="d-flex justify-content-between mt-2">
                 <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#CancelBackdrop">Cancel</a>
+                <a class="btn btn-primary" role="button" (click)="Coupons()" >Try Coupons</a>
                 <a class="btn btn-success" href="#" role="button" data-toggle="modal" data-target="#BookBackdrop" (click)="onBook(bookingConfirmation)" >Book</a></div>
         </div>
     </div> 
@@ -40,7 +46,7 @@
                 <div  *ngIf="BookingIsDone();else elseBlock" class="card-body text-center"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
                     <h6><i class="bi bi-check-circle-fill" style="color: green;"></i> SUCCESSFUL</h6>
                     <p>Your tickets were successfully booked! <br> Click on continue to browse.</p>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"  (click)="onHome()">Continue</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"  (click)="onFeedback()">Continue</button>
                 </div>
                <ng-template #elseBlock >
                 <div class="card-body text-center">OOPS

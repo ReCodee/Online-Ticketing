@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes,RouterModule } from '@angular/router';
 import { BookingseatComponent } from './bookingseat/bookingseat.component';
-import { BookingService } from './bookingseat/bookingseat.service';
+import { BookingService } from './services/bookingseat.service';
 import { AboutUsComponent } from './footer/about-us/about-us.component';
 import { ContactUsComponent } from './footer/contact-us/contact-us.component';
 import { FeedbackComponent } from './footer/feedback/feedback.component';
@@ -28,6 +28,8 @@ import { SignUpComponent } from './auth/signUp/signUp.component';
 
 import { DisplayBusesComponent } from './search-buses/display-buses/display-buses.component';
 import { authGaurd } from './auth/authGaurd.service';
+import { FeedBackComponent } from './feedback/feedback.component';
+import { Booking } from './services/booking.service';
 
 const appRoutes : Routes=[
   { path: '' , component: FooterComponent , outlet:'footerRouter'},
@@ -61,6 +63,7 @@ const appRoutes : Routes=[
     SearchBusesComponent,
     LoginComponent,
     SignUpComponent,
+    FeedBackComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ const appRoutes : Routes=[
     HttpClientModule,
     RouterModule,
   ],
-  providers: [BookingService , authGaurd],
+  providers: [BookingService , authGaurd, Booking],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

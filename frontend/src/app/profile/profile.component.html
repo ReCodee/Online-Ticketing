@@ -13,7 +13,7 @@
                   class="form-control-plaintext" id="username"  [disabled]="!edit"
                 
                   name="username"
-                  [(ngModel)]="userdata.username" 
+                  [(ngModel)]="userdata.fullName" 
                   required
                   #username="ngModel">
                   <span *ngIf="!username.valid && edit" style="color: red;font-size: 10px;">*Please Enter the Name</span>

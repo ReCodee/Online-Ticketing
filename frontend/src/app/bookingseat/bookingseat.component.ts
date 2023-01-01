@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 import { passenger } from '../Models/passenger.model';
 import { Seat } from '../Models/seat.model';
-import { SearchService } from '../search.service';
-import { BookingService } from './bookingseat.service';
+import { SearchService } from '../services/search.service';
+import { BookingService } from '../services/bookingseat.service';
 
 @Component({
   selector: 'app-bookingseat',
@@ -16,11 +17,13 @@ import { BookingService } from './bookingseat.service';
 export class BookingseatComponent implements OnInit {
 
   constructor(private bookingservice:BookingService,private router:Router,private http: HttpClient,
-     private searchservice:SearchService ) { }
+     private searchservice:SearchService, private loginservice:LoginService ) { }
 
   totalpassenger:passenger[]=[];
   SelectedSeat=[];
   
+  id:Number;
+
   total=0;
 
   Boarding:String[]=["Andheri","Vashi","Dadar","CSTM"];
@@ -51,6 +54,11 @@ export class BookingseatComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.loginservice.userid)
+    if ( this.loginservice.userid == undefined || this.loginservice.userid == 0 ) {
+      this.router.navigate(['/'])
+    } 
+    this.bookingservice.id = 4;
     this.bookingservice.totalpassengers=[];
     this.totalpassenger=this.bookingservice.totalpassengers;
     this.fetchSeating(this.BusId,this.date);
@@ -59,6 +67,55 @@ export class BookingseatComponent implements OnInit {
     console.log("console here");
     console.log(this.date);
     console.log(this.searchservice.date);
+    this.seatingDetail.push(new Seat(0, 0, 0))
+    this.seatingDetail.push(new Seat(1, 1, 0))
+    this.seatingDetail.push(new Seat(2, 2, 0))
+    this.seatingDetail.push(new Seat(3, 3, 0))
+    this.seatingDetail.push(new Seat(4, 4, 0))
+    this.seatingDetail.push(new Seat(5, 5, 0))
+    this.seatingDetail.push(new Seat(6, 6, 0))
+    this.seatingDetail.push(new Seat(7, 7, 0))
+    this.seatingDetail.push(new Seat(8, 8, 0))
+    this.seatingDetail.push(new Seat(9, 9, 0))
+    this.seatingDetail.push(new Seat(10, 10, 0))
+    this.seatingDetail.push(new Seat(11, 11, 0))
+    this.seatingDetail.push(new Seat(12, 12, 0))
+    this.seatingDetail.push(new Seat(13, 13, 0))
+    this.seatingDetail.push(new Seat(14, 14, 0))
+    this.seatingDetail.push(new Seat(15, 15, 0))
+    this.seatingDetail.push(new Seat(16, 16, 0))
+    this.seatingDetail.push(new Seat(17, 17, 0))
+    this.seatingDetail.push(new Seat(18, 18, 0))
+    this.seatingDetail.push(new Seat(19, 19, 0))
+    this.seatingDetail.push(new Seat(20, 20, 0))
+    this.seatingDetail.push(new Seat(21, 21, 0))
+    this.seatingDetail.push(new Seat(22, 22, 0))
+    this.seatingDetail.push(new Seat(23, 23, 0))
+    this.seatingDetail.push(new Seat(24, 24, 0))
+    this.seatingDetail.push(new Seat(25, 25, 0))
+    this.seatingDetail.push(new Seat(26, 26, 0))
+    this.seatingDetail.push(new Seat(27, 27, 0))
+    this.seatingDetail.push(new Seat(28, 28, 0))
+    this.seatingDetail.push(new Seat(29, 29, 0))
+    this.seatingDetail.push(new Seat(30, 30, 0))
+    this.seatingDetail.push(new Seat(31, 31, 0))
+    this.seatingDetail.push(new Seat(32, 32, 0))
+    this.seatingDetail.push(new Seat(33, 33, 0))
+    this.seatingDetail.push(new Seat(34, 34, 0))
+    this.seatingDetail.push(new Seat(35, 35, 0))
+    this.seatingDetail.push(new Seat(36, 36, 0))
+    this.seatingDetail.push(new Seat(37, 37, 0))
+    this.seatingDetail.push(new Seat(38, 38, 0))
+    this.seatingDetail.push(new Seat(39, 39, 0))
+    this.seatingDetail.push(new Seat(40, 40, 0))
+    this.seatingDetail.push(new Seat(41, 41, 0))
+    this.seatingDetail.push(new Seat(42, 42, 0))
+    this.seatingDetail.push(new Seat(43, 43, 0))
+    this.seatingDetail.push(new Seat(44, 44, 0))
+    this.seatingDetail.push(new Seat(45, 45, 0))
+    this.seatingDetail.push(new Seat(46, 46, 0))
+    this.seatingDetail.push(new Seat(47, 47, 0))
+    this.seatingDetail.push(new Seat(48, 48, 0))
   }
 
   Seat(e)

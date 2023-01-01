@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LoginService } from '../login.service';
+import { LoginService } from '../services/login.service';
 import { Userprofile } from '../Models/profile.model';
+import { User } from '../auth/user';
 
 @Component({
   selector: 'app-profile',
@@ -13,9 +14,14 @@ export class ProfileComponent implements OnInit {
 
 
  //userdata:Userprofile;
+
+ fullName:String;
+
  userdata:Userprofile={
   userId:0,
-  username:"",
+  fullName:"",
+  firstName:"",
+  lastName:"",
   email:"",
   phone: "",
   gender:"",
@@ -25,7 +31,9 @@ export class ProfileComponent implements OnInit {
 
   tempdata:Userprofile={
     userId:0,
-    username:"",
+    fullName:"",
+    firstName:"",
+    lastName:"",
     email:"",
     phone: "",
     gender:"",
@@ -39,8 +47,15 @@ export class ProfileComponent implements OnInit {
    }
 
   ngOnInit(): void {
-      
-    this.onfetchdata(this.loginservice.userid); 
+    
+    this.fullName = this.userdata.firstName + " " + this.userdata.lastName;  
+    this.userdata.email = this.loginservice.user.email;
+    this.userdata.city = this.loginservice.user.city;
+    this.userdata.gender = this.loginservice.user.gender;
+    this.userdata.fullName = this.loginservice.user.firstName + " " + this.loginservice.user.lastName;
+    this.userdata.firstName = this.loginservice.user.firstName;
+    this.userdata.lastName = this.loginservice.user.lastName;
+    this.userdata.phone = this.loginservice.user.phone;
   }
 
   edit=false;
@@ -52,18 +67,25 @@ export class ProfileComponent implements OnInit {
 
    onSubmit(userform:NgForm){
     this.edit= (this.edit==true)? false: true;
-   console.log(userform);
- 
     
+   console.log(userform.form.value.email);
+   this.userdata = userform.form.value;
+   this.userdata.userId = this.loginservice.userid;
+   let arr : string[] = this.fullName.split(' ');
+   this.userdata.firstName = arr[1];
+   this.userdata.lastName = arr[2];
+    console.log(this.userdata);
  // console.log(this.userdata);
   this.onput();
    }
 
 
    onput(){
-     this.http.put('http://localhost:8082/myprofile/edit',this.userdata).subscribe(res =>{
-       //console.log(res);
-     })
+     let user = new User(this.userdata.firstName, this.userdata.lastName, this.userdata.email, this.userdata.password, this.userdata.phone, this.userdata.city, this.userdata.gender);
+     console.log(user)
+    //  this.http.put('http://localhost:8080/api/users/'+this.userdata.userId, user).subscribe(res =>{
+    //    console.log(res);
+    //  })
    }
 
 

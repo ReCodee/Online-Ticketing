@@ -1,12 +1,22 @@
 export class Bus {
 
-    busID!: number;
+    vehicleId!: number;
     
     busName!: string;
     
-    busNumberPlate!: string;
+    UDT: string;
+
+    type: string;
+
+    from: string;
+
+    to: string;
+
+    travelTime: string;
+
+    numberPlate!: string;
     
-    numberOfSeats!: number;
+    seats!: number;
     
     date!: string;
     

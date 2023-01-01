@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Star Rating Form | CodingNepal</title>
-    <link rel="stylesheet" href="feedback.component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-  </head>
-  <body>
-    <div class="container">
-      <div class="post">
+   <div class="feedback-body">
+   <div class="container">
+     <h1>Provide us your helpful feedback</h1>
+      <div class="post" [hidden]="!display">
         <div class="text">Thanks for rating us!</div>
         <div class="edit">EDIT</div>
       </div>
@@ -23,32 +16,18 @@
         <label for="rate-2" class="fas fa-star"></label>
         <input type="radio" name="rate" id="rate-1">
         <label for="rate-1" class="fas fa-star"></label>
-        <form action="#">
+        
+        <div id = "form">
+        <div class="msg" >
           <header></header>
-          <div class="textarea">
+        </div>
+          <div class="textarea" >
             <textarea cols="30" placeholder="Describe your experience.."></textarea>
           </div>
           <div class="btn">
-            <button type="submit">Post</button>
+            <button type="button" (click)="onPost()">Post</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-    <script>
-      const btn = document.querySelector("button");
-      const post = document.querySelector(".post");
-      const widget = document.querySelector(".star-widget");
-      const editBtn = document.querySelector(".edit");
-      btn.onclick = ()=>{
-        widget.style.display = "none";
-        post.style.display = "block";
-        editBtn.onclick = ()=>{
-          widget.style.display = "block";
-          post.style.display = "none";
-        }
-        return false;
-      }
-    </script>
-
-  </body>
-</html>
+  </div>

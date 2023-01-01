@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { bookings } from './bookings';
-import { LoginService } from '../login.service';
+import { LoginService } from '../services/login.service';
+import { Passengers } from '../confirmation/travellers/travellers.model';
+import { passenger } from '../Models/passenger.model';
+import { SelectMultipleControlValueAccessor } from '@angular/forms';
 @Component({
   selector: 'app-mybookings',
   templateUrl: './mybookings.component.html',
@@ -30,6 +33,7 @@ export class MybookingsComponent implements OnInit {
  ]*/
  printss=false
  bookings : bookings[] =[];
+ passengers : passenger[] = [];
  userId : number;
 
 
@@ -37,7 +41,6 @@ export class MybookingsComponent implements OnInit {
  constructor(
    private httpClient : HttpClient,
    private loginService : LoginService
-   
    ) {
 
   }
@@ -46,11 +49,28 @@ export class MybookingsComponent implements OnInit {
    this.userId = this.loginService.userid;
    this.printtable();
  }
+
+ Delete(id:number):void{
+    this.httpClient.delete<Map<String, Boolean>>('http://localhost:8080/api/tickets/'+id).subscribe(data => {
+      console.log(data);
+    })
+    this.passengers = []
+    this.printtable();
+ }
+
  printtable(){
    //call
-   this.httpClient.get<bookings[]>('http://localhost:8082/myBookings').subscribe(data => {
+   this.httpClient.get<bookings[]>('http://localhost:8080/api/tickets/'+this.userId).subscribe(data => {
     this.bookings=data;
 
+    for ( let i = 0 ; i < this.bookings.length ; i++ ) {
+      for ( let j = 0 ; j < this.bookings[i].passengers.length ; j++ ) {
+         this.bookings[i].passengers[j].source = this.bookings[i].source;
+         this.bookings[i].passengers[j].destination = this.bookings[i].destination;
+         this.bookings[i].passengers[j].ticketID = this.bookings[i].id;
+         this.passengers.push(this.bookings[i].passengers[j]);
+      }
+    }
     
     console.log("hello");
     console.log(this.userId);

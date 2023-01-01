@@ -35,9 +35,10 @@ margin-bottom: 30px;
 }
 
 .last-footer{
-    width:70% ;
+    width:70%;
     position:relative;
 }
+
 
 ul li{
   margin-bottom: 8px;  
@@ -61,7 +62,7 @@ transition: all 0.3s ease;
 }
 
 .last-footer img{
-    height:40px;
+    height:100px;
     width:auto;
     padding:5px;
     margin-bottom: 10px;
